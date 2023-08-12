@@ -1,7 +1,7 @@
 <div>
     <x-slot name="header">
         <h2 class="text-xl font-semibold leading-tight text-gray-800">
-            Add Country
+            {{ $isEdit ? 'Edit' : 'Add' }} Country
         </h2>
 
     </x-slot> 
@@ -10,6 +10,7 @@
             <div class="overflow-hidden bg-white shadow-sm sm:rounded-lg">
                 <div class="p-6 bg-white border-b border-gray-200">
                     <form wire:submit.prevent="submit">
+                        @csrf
                         <div>
                             <x-input-label class="mb-1" for="country.name"  value="Country Name" />
                             <x-input type="text" class="mt-1" name="country.name" wire:model="country.name"/>

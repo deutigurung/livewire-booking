@@ -25,8 +25,8 @@
                             <td></td>
                             <td>{{ $country->name }}</td>
                             <td>
-                                <a href="" class="inline-flex items-center px-4 py-2 text-xs font-semibold tracking-widest text-white uppercase bg-green-800 rounded-md border border-transparent hover:bg-green-700">Edit</a>
-                                <button class="px-4 py-2 text-xs text-red-500 uppercase bg-red-200 rounded-md border border-transparent hover:text-red-700 hover:bg-red-300">
+                                <a href="{{ route('country.edit',$country->id)}}" class="inline-flex items-center px-4 py-2 text-xs font-semibold tracking-widest text-white uppercase bg-green-800 rounded-md border border-transparent hover:bg-green-700">Edit</a>
+                                <button wire:click="deleteConfirm('destroy',{{$country->id}})" class="px-4 py-2 text-xs text-red-500 uppercase bg-red-200 rounded-md border border-transparent hover:text-red-700 hover:bg-red-300">
                                     Delete
                                 </button>
                             </td>

@@ -32,3 +32,5 @@ Route::middleware([
 
 Route::get('country/create',CountryForm::class)->name('country.create');
 Route::get('countries',CountryList::class)->name('country.index');
+Route::get('countries/{country}',CountryForm::class)->name('country.edit');
+

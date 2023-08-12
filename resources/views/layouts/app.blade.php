@@ -40,6 +40,28 @@
 
         @stack('modals')
 
+        <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script> 
+
         @livewireScripts
+         <!-- sweetalerts js -->
+         <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+         <script>
+            window.addEventListener("swal:confirm", event => {
+                Swal.fire({
+                    title: event.detail.title,
+                    text: event.detail.text,
+                    icon: event.detail.type,
+                    showCancelButton: true,
+                    confirmButtonColor: 'rbg(239 68 6)',
+                    confirmButtonText: 'Yes, delete it...'
+                }).then((result) => {
+                    if(result.isConfirmed){
+                        window.livewire.emit(event.detail.method, event.detail.id);
+                    }
+
+                });
+            });
+        </script> 
+          @stack('scripts')
     </body>
 </html>
