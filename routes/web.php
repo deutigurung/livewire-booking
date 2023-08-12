@@ -1,5 +1,7 @@
 <?php
 
+use App\Http\Livewire\Country\CountryList;
+use App\Http\Livewire\Country\Form as CountryForm;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -26,3 +28,7 @@ Route::middleware([
         return view('dashboard');
     })->name('dashboard');
 });
+
+
+Route::get('country/create',CountryForm::class)->name('country.create');
+Route::get('countries',CountryList::class)->name('country.index');
