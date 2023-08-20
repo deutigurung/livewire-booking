@@ -1,10 +1,10 @@
 <div>
     <x-slot name="header">
         <h2 class="text-xl font-semibold leading-tight text-gray-800">
-            {{ __('Country') }}
+            {{ __('City') }}
         </h2>
 
-        <a href="{{ route('country.create')}}" class="inline-flex items-center px-4 py-2 text-xs font-semibold tracking-widest text-white uppercase bg-gray-800 rounded-md border border-transparent hover:bg-gray-700">Add New</a>
+        <a href="{{ route('cities.create')}}" class="inline-flex items-center px-4 py-2 text-xs font-semibold tracking-widest text-white uppercase bg-gray-800 rounded-md border border-transparent hover:bg-gray-700">Add New</a>
     </x-slot>
 
     <div class="py-12">
@@ -15,20 +15,20 @@
                         <tr>
                             <th class="px-6 py-3 text-left bg-gray-50">
                             </th>
+                            <th class="bg-gray-50">Country</th>
                             <th class="bg-gray-50">Name</th>
-                            <th class="bg-gray-50">Total Cities</th>
                             <th class="bg-gray-50">Action</th>
                         </tr>
                     </thead>
                     <tbody class="bg-white divide-y divide-gray-200 divide-solid">
-                        @foreach($countries as $country)
+                        @foreach($cities as $city)
                         <tr>
                             <td></td>
-                            <td>{{ $country->name }}</td>
-                            <td>{{ $country->cities_count }}</td>
+                            <td>{{ $city->country->name }}</td>
+                            <td>{{ $city->name }}</td>
                             <td>
-                                <a href="{{ route('country.edit',$country->id)}}" class="inline-flex items-center px-4 py-2 text-xs font-semibold tracking-widest text-white uppercase bg-green-800 rounded-md border border-transparent hover:bg-green-700">Edit</a>
-                                <button wire:click="deleteConfirm('destroy',{{$country->id}})" class="px-4 py-2 text-xs text-red-500 uppercase bg-red-200 rounded-md border border-transparent hover:text-red-700 hover:bg-red-300">
+                                <a href="{{ route('cities.edit',$city->id)}}" class="inline-flex items-center px-4 py-2 text-xs font-semibold tracking-widest text-white uppercase bg-green-800 rounded-md border border-transparent hover:bg-green-700">Edit</a>
+                                <button wire:click="deleteConfirm('destroy',{{$city->id}})" class="px-4 py-2 text-xs text-red-500 uppercase bg-red-200 rounded-md border border-transparent hover:text-red-700 hover:bg-red-300">
                                     Delete
                                 </button>
                             </td>

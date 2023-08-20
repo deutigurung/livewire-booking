@@ -19,6 +19,10 @@
                     <x-nav-link href="{{ route('country.index')}}" :active="request()->routeIs('country.index')">
                         {{ __('Country')}}
                     </x-nav-link>
+
+                    <x-nav-link href="{{ route('cities.index')}}" :active="request()->routeIs('cities.index')">
+                        {{ __('City')}}
+                    </x-nav-link>
                 </div>
             </div>
 

@@ -1,5 +1,7 @@
 <?php
 
+use App\Http\Livewire\City\CityForm;
+use App\Http\Livewire\City\CityList;
 use App\Http\Livewire\Country\CountryList;
 use App\Http\Livewire\Country\Form as CountryForm;
 use Illuminate\Support\Facades\Route;
@@ -34,3 +36,6 @@ Route::get('country/create',CountryForm::class)->name('country.create');
 Route::get('countries',CountryList::class)->name('country.index');
 Route::get('countries/{country}',CountryForm::class)->name('country.edit');
 
+Route::get('cities/create',CityForm::class)->name('cities.create');
+Route::get('cities',CityList::class)->name('cities.index');
+Route::get('cities/{city}',CityForm::class)->name('cities.edit');

@@ -1,21 +1,20 @@
 <?php
 
-namespace App\Http\Livewire\Country;
+namespace App\Http\Livewire\City;
 
-use App\Models\Country;
+use App\Models\City;
 use Livewire\Component;
 
-class CountryList extends Component
+class CityList extends Component
 {
     protected $listeners = ['destroy'];
-
     public function render()
     {
-        $countries = Country::withCount('cities')->get();
-        return view('livewire.country.list',compact('countries'));
+        $cities = City::all();
+        return view('livewire.city.list',compact('cities'));
     }
 
-    public function deleteConfirm($method , $id = null){
+    public function deleteConfirm($method,$id = null){
         $this->dispatchBrowserEvent('swal:confirm',[
             'type' => 'warning',
             'title' => 'Are you sure want to delete?',
@@ -26,7 +25,7 @@ class CountryList extends Component
     }
 
     public function destroy($id){
-        Country::findOrFail($id)->delete();
-        return redirect()->route('country.index');
+        City::findOrFail($id)->delete();
+        return redirect()->route('cities.index');
     }
 }
