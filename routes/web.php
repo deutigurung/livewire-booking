@@ -1,5 +1,7 @@
 <?php
 
+use App\Http\Livewire\Apartment\ApartmentForm;
+use App\Http\Livewire\Apartment\ApartmentList;
 use App\Http\Livewire\City\CityForm;
 use App\Http\Livewire\City\CityList;
 use App\Http\Livewire\Country\CountryList;
@@ -45,3 +47,7 @@ Route::get('cities/{city}',CityForm::class)->name('cities.edit');
 Route::get('properties/create',PropertyForm::class)->name('properties.create');
 Route::get('properties',PropertyList::class)->name('properties.index');
 Route::get('properties/{property}',PropertyForm::class)->name('properties.edit');
+
+Route::get('apartments/create',ApartmentForm::class)->name('apartments.create');
+Route::get('apartments',ApartmentList::class)->name('apartments.index');
+Route::get('apartments/{apartment}',ApartmentForm::class)->name('apartments.edit');

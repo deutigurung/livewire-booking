@@ -27,6 +27,10 @@
                     <x-nav-link href="{{ route('properties.index')}}" :active="request()->routeIs('properties.index')">
                         {{ __('Property')}}
                     </x-nav-link>
+
+                    <x-nav-link href="{{ route('apartments.index')}}" :active="request()->routeIs('apartments.index')">
+                        {{ __('Apartment')}}
+                    </x-nav-link>
                 </div>
             </div>
 
