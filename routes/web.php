@@ -4,6 +4,8 @@ use App\Http\Livewire\City\CityForm;
 use App\Http\Livewire\City\CityList;
 use App\Http\Livewire\Country\CountryList;
 use App\Http\Livewire\Country\Form as CountryForm;
+use App\Http\Livewire\Property\PropertyForm;
+use App\Http\Livewire\Property\PropertyList;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -39,3 +41,7 @@ Route::get('countries/{country}',CountryForm::class)->name('country.edit');
 Route::get('cities/create',CityForm::class)->name('cities.create');
 Route::get('cities',CityList::class)->name('cities.index');
 Route::get('cities/{city}',CityForm::class)->name('cities.edit');
+
+Route::get('properties/create',PropertyForm::class)->name('properties.create');
+Route::get('properties',PropertyList::class)->name('properties.index');
+Route::get('properties/{property}',PropertyForm::class)->name('properties.edit');
