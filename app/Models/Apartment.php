@@ -31,4 +31,9 @@ class Apartment extends Model
         return $this->hasMany(Room::class);
     }
 
+    public function facilities()
+    {
+        return $this->belongsToMany(Facility::class,'apartment_facility');
+    }
+
 }
