@@ -21,4 +21,9 @@ class Room extends Model
         return $this->belongsTo(Apartment::class);
     }
 
+    public function beds()
+    {
+        return $this->hasMany(Bed::class);
+    }
+
 }

@@ -1,7 +1,7 @@
 <div>
     <x-slot name="header">
         <h2 class="text-xl font-semibold leading-tight text-gray-800">
-            {{ $isEdit ? 'Edit' : 'Add' }} Room
+            {{ $isUpdate ? 'Edit' : 'Add' }} Bed
         </h2>
 
     </x-slot> 
@@ -12,36 +12,36 @@
                     <form wire:submit.prevent="submit">
                         @csrf
                         <div>
-                            <x-input-label class="mb-1" for="room.apartment_id"  value="Apartment Name" />
-                             <select name="room.apartment_id" wire:model="room.apartment_id">
-                                <option selected value="">---Select Apartment---</option>
-                                @foreach($data['apartments'] as $apartment)
-                                    <option value="{{ $apartment['id'] }}">{{ $apartment['name']}}</option>
+                            <x-input-label class="mb-1" for="bed.room_id"  value="Room Name" />
+                             <select name="bed.room_id" wire:model="bed.room_id">
+                                <option selected value="">---Select Room---</option>
+                                @foreach($data['rooms'] as $room)
+                                    <option value="{{ $room['id'] }}">{{ $room['name'] }}</option>
                                 @endforeach
                              </select>
-                            @error('room.apartment_id') 
+                            @error('bed.room_id') 
                                 <span class="error text-red-500">{{ $message }}</span> 
                             @enderror
                         </div>
 
                         <div>
-                            <x-input-label class="mb-1" for="room.room_type_id"  value="Room Type" />
-                             <select name="room.room_type_id" wire:model="room.room_type_id">
-                                <option selected value="">---Select Room Type---</option>
+                            <x-input-label class="mb-1" for="bed.bed_type_id"  value="Bed Type" />
+                             <select name="bed.bed_type_id" wire:model="bed.bed_type_id">
+                                <option selected value="">---Select Bed Type---</option>
                                 @foreach($data['types'] as $type)
                                     <option value="{{ $type['id'] }}">{{ $type['name']}}</option>
                                 @endforeach
                              </select>
-                            @error('room.room_type_id') 
+                            @error('bed.bed_type_id') 
                                 <span class="error text-red-500">{{ $message }}</span> 
                             @enderror
                         </div>
 
 
                         <div>
-                            <x-input-label class="mb-1" for="room.name"  value="Room Name" />
-                            <x-input type="text" class="mt-1" name="room.name" wire:model="room.name"/>
-                            @error('room.name') 
+                            <x-input-label class="mb-1" for="bed.name"  value="Bed Name" />
+                            <x-input type="text" class="mt-1" name="bed.name" wire:model="bed.name"/>
+                            @error('bed.name') 
                                 <span class="error text-red-500">{{ $message }}</span> 
                             @enderror
                         </div>
