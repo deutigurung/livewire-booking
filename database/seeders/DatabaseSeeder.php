@@ -25,5 +25,7 @@ class DatabaseSeeder extends Seeder
         //$this->call(RoleAndPermissionSeeder::class);
 
         // $this->call(ApartmentTypeSeeder::class);
+
+        // $this->call(RoomTypeSeeder::class);
     }
 }
