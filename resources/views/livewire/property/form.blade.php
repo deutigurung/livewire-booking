@@ -66,6 +66,9 @@
                                                 </div>
                                             </div>
                                         @endforeach
+                                        @error('property.facilities') 
+                                            <span class="error text-red-500">{{ $message }}</span> 
+                                        @enderror
                                       </div>
                                     </fieldset>
                                 </div>
