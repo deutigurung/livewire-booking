@@ -26,7 +26,19 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('front.index');
+});
+
+Route::get('/about', function () {
+    return view('front.about');
+});
+
+Route::get('/contact', function () {
+    return view('front.contact');
+});
+
+Route::get('/blog', function () {
+    return view('front.blog');
 });
 
 Route::middleware([
