@@ -24,11 +24,10 @@
                 <div class="blog_posts">
                     
                     <!-- Blog Post -->
-                    @foreach($blogs as $blog)
                     <div class="blog_post">
                         <div class="blog_post_image">
                             <img src="{{ asset('front/img/blog_1.jpg')}}" alt="">
-                            <div class="blog_post_date"><a href="#">{{ date('M d, Y',strtotime($blog->created_at))}}</a></div>
+                            <div class="blog_post_date"><a href="#">Oct 20, 2018</a></div>
                         </div>
                         <div class="blog_post_content">
                             <div class="blog_post_title"><a href="{{ route('singleBlog',$blog->slug)}}">{{$blog->title}}</a></div>
@@ -57,27 +56,16 @@
                                 </ul>
                             </div>
                             <div class="blog_post_text">
-                                <p>{{ $blog->summary}}</p>
+                                <p>{{ $blog->description}}</p>
                             </div>
-                            <div class="button blog_post_button"><a href="{{ route('singleBlog',$blog->slug)}}">Read More</a></div>
                         </div>
-                    </div>
-                    @endforeach
-
-                    <!-- Page Nav -->
-                    <div class="page_nav">
-                        <ul class="d-flex flex-row align-items-start justify-content-start">
-                            <li class="active"><a href="#">01.</a></li>
-                            <li><a href="#">02.</a></li>
-                            <li><a href="#">03.</a></li>
-                        </ul>
                     </div>
 
                 </div>
             </div>
 
-            <!-- Sidebar -->
-            @include('front.includes.right-sidebar')
+           @include('front.includes.right-sidebar')
+
         </div>
     </div>
 </div>

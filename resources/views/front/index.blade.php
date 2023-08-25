@@ -984,38 +984,18 @@
                     <div class="owl-carousel owl-theme booking_slider owl-loaded owl-drag">
                         <div class="owl-stage-outer">
                             <div class="owl-stage" style="transform: translate3d(-1520px, 0px, 0px); transition: all 1.2s ease 0s; width: 3420px;">
-                                <div class="owl-item active" style="width: 350px; margin-right: 30px;">
-                                    <div class="booking_item">
-                                        <div class="background_image" style="background-image:url(/front/images/booking_1.jpg)"></div>
-                                        <div class="booking_overlay trans_200"></div>
-                                        <div class="booking_price">$120/Night</div>
-                                        <div class="booking_link">
-                                            <a href="https://themewagon.github.io/theriver/booking.html">Family Room</a>
-                                        </div>
-                                    </div>
-                                </div>
-                        
+                                @foreach($apartments as $apartment)
                                 <div class="owl-item active" style="width: 350px; margin-right: 30px;">
                                     <div class="booking_item">
                                         <div class="background_image" style="background-image:url(/front/images/booking_2.jpg)"></div>
                                         <div class="booking_overlay trans_200"></div>
                                         <div class="booking_price">$120/Night</div>
                                         <div class="booking_link">
-                                            <a href="https://themewagon.github.io/theriver/booking.html">Deluxe Room</a>
+                                            <a href="https://themewagon.github.io/theriver/booking.html">{{ $apartment->name}}</a>
                                         </div>
                                     </div>
                                 </div>
-                            
-                                <div class="owl-item active" style="width: 350px; margin-right: 30px;">
-                                    <div class="booking_item">
-                                        <div class="background_image" style="background-image:url(/front/images/booking_3.jpg)"></div>
-                                        <div class="booking_overlay trans_200"></div>
-                                        <div class="booking_price">$120/Night</div>
-                                        <div class="booking_link">
-                                            <a href="https://themewagon.github.io/theriver/booking.html">Single Room</a>
-                                        </div>
-                                    </div>
-                                </div>
+                                @endforeach
                             </div>
                         </div>
                    
@@ -1043,60 +1023,17 @@
         <div class="owl-carousel owl-theme blog_slider owl-loaded owl-drag">
             <div class="owl-stage-outer">
                 <div class="owl-stage" style="transform: translate3d(-1801px, 0px, 0px); transition: all 1.2s ease 0s; width: 4053px;">
+                    @foreach($blogs as $blog)
                     <div class="owl-item active" style="width: 448.333px; margin-right: 2px;">
                         <div class="blog_slide">
                             <div class="background_image" style="background-image:url(/front/images/index_blog_1.jpg)"></div>
                             <div class="blog_content">
-                                <div class="blog_date"><a href="#">Oct 20, 2018</a></div>
-                                <div class="blog_title"><a href="#">How to book your stay</a></div>
+                                <div class="blog_date"><a href="{{ route('singleBlog',$blog->slug)}}">{{ date('M d, Y',strtotime($blog->created_at))}}</a></div>
+                                <div class="blog_title"><a href="{{ route('singleBlog',$blog->slug)}}">{{ $blog->title}}</a></div>
                             </div>
                         </div>
                     </div>
-                    <div class="owl-item active" style="width: 448.333px; margin-right: 2px;">
-                        <div class="blog_slide">
-                            <div class="background_image" style="background-image:url(/front/images/index_blog_2.jpg)"></div>
-                            <div class="blog_content">
-                                <div class="blog_date"><a href="#">Oct 20, 2018</a></div>
-                                <div class="blog_title"><a href="#">10 restaurants in town</a></div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="owl-item active" style="width: 448.333px; margin-right: 2px;">
-                        <div class="blog_slide">
-                            <div class="background_image" style="background-image:url(/front/images/index_blog_3.jpg)"></div>
-                            <div class="blog_content">
-                                <div class="blog_date"><a href="#">Oct 20, 2018</a></div>
-                                <div class="blog_title"><a href="#">A perfect wedding</a></div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="owl-item active" style="width: 448.333px; margin-right: 2px;">
-                        <div class="blog_slide">
-                            <div class="background_image" style="background-image:url(/front/images/index_blog_1.jpg)"></div>
-                            <div class="blog_content">
-                                <div class="blog_date"><a href="#">Oct 20, 2018</a></div>
-                                <div class="blog_title"><a href="#">How to book your stay</a></div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="owl-item active" style="width: 448.333px; margin-right: 2px;">
-                        <div class="blog_slide">
-                            <div class="background_image" style="background-image:url(/front/images/index_blog_2.jpg)"></div>
-                            <div class="blog_content">
-                                <div class="blog_date"><a href="#">Oct 20, 2018</a></div>
-                                <div class="blog_title"><a href="#">10 restaurants in town</a></div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="owl-item active" style="width: 448.333px; margin-right: 2px;">
-                        <div class="blog_slide">
-                            <div class="background_image" style="background-image:url(/front/images/index_blog_3.jpg)"></div>
-                            <div class="blog_content">
-                                <div class="blog_date"><a href="#">Oct 20, 2018</a></div>
-                                <div class="blog_title"><a href="#">A perfect wedding</a></div>
-                            </div>
-                        </div>
-                    </div>
+                    @endforeach
                 </div>
             </div>
             <div class="owl-nav disabled">
