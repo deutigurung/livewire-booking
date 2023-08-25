@@ -29,4 +29,12 @@ class BlogList extends Component
         Blog::findOrFail($id)->delete();
         return redirect()->route('blogs.index');
     }
+
+    public function updateStatus($id){
+        $blog = Blog::findOrFail($id);
+        $blog->update([
+            'status' => !$blog->status
+        ]);
+        return redirect()->route('blogs.index');
+    }
 }
