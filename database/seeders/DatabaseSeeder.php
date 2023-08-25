@@ -29,5 +29,7 @@ class DatabaseSeeder extends Seeder
         // $this->call(RoomTypeSeeder::class);
 
         // $this->call(FacilitySeeder::class);
+
+        // $this->call(BlogCategorySeeder::class);
     }
 }

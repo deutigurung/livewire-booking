@@ -4,6 +4,8 @@ use App\Http\Livewire\Apartment\ApartmentForm;
 use App\Http\Livewire\Apartment\ApartmentList;
 use App\Http\Livewire\Bed\BedForm;
 use App\Http\Livewire\Bed\BedList;
+use App\Http\Livewire\Blog\BlogForm;
+use App\Http\Livewire\Blog\BlogList;
 use App\Http\Livewire\City\CityForm;
 use App\Http\Livewire\City\CityList;
 use App\Http\Livewire\Country\CountryList;
@@ -75,3 +77,7 @@ Route::get('rooms/{room}',RoomForm::class)->name('rooms.edit');
 Route::get('beds/create',BedForm::class)->name('beds.create');
 Route::get('beds',BedList::class)->name('beds.index');
 Route::get('beds/{bed}',BedForm::class)->name('beds.edit');
+
+Route::get('blogs/create',BlogForm::class)->name('blogs.create');
+Route::get('blogs',BlogList::class)->name('blogs.index');
+Route::get('blogs/{blog}',BlogForm::class)->name('blogs.edit');
