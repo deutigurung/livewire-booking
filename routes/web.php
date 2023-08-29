@@ -3,6 +3,7 @@
 use App\Http\Controllers\HomeController;
 use App\Http\Livewire\Apartment\ApartmentForm;
 use App\Http\Livewire\Apartment\ApartmentList;
+use App\Http\Livewire\Apartment\ApartmentPriceForm;
 use App\Http\Livewire\Bed\BedForm;
 use App\Http\Livewire\Bed\BedList;
 use App\Http\Livewire\Blog\BlogForm;
@@ -61,6 +62,8 @@ Route::middleware(['auth:sanctum',config('jetstream.auth_session'),'verified',])
     Route::get('apartments/create',ApartmentForm::class)->name('apartments.create');
     Route::get('apartments',ApartmentList::class)->name('apartments.index');
     Route::get('apartments/{apartment}',ApartmentForm::class)->name('apartments.edit');
+    Route::get('apartments/{apartment}/price',ApartmentPriceForm::class)->name('apartments.price');
+
 
     Route::get('rooms/create',RoomForm::class)->name('rooms.create');
     Route::get('rooms',RoomList::class)->name('rooms.index');

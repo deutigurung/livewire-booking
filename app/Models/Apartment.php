@@ -36,4 +36,9 @@ class Apartment extends Model
         return $this->belongsToMany(Facility::class,'apartment_facility');
     }
 
+    public function apartment_prices()
+    {
+        return $this->hasMany(ApartmentPrice::class,'apartment_id');
+    }
+
 }

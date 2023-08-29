@@ -6,6 +6,7 @@ use App\Models\Apartment;
 use App\Models\ApartmentType;
 use App\Models\Facility;
 use App\Models\Property;
+use Carbon\Carbon;
 use Livewire\Component;
 
 class ApartmentForm extends Component
@@ -24,6 +25,7 @@ class ApartmentForm extends Component
         'facilities' => 'required|array',
         'facilities.*' => 'required',
     ];
+
     public function mount(Apartment $apartment)
     {
         $this->apartment = $apartment;
@@ -40,12 +42,12 @@ class ApartmentForm extends Component
         $this->data['facilities'] = Facility::get();
     }
 
-    public function render()
-    {
+    public function render(){
         return view('livewire.apartment.form');
     }
 
     public function submit(){
+      
         $this->validate();
         $this->apartment->save();
         $this->apartment->facilities()->sync($this->facilities);

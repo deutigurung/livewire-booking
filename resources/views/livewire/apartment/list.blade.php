@@ -36,9 +36,9 @@
                         <tbody class="text-gray-900">
                             @foreach($apartments as $apartment)
                                 <tr>
-                                    <th scope="row" class="px-6 py-4">
+                                    <td scope="row" class="px-6 py-4">
                                         {{ $apartment->property->name }}
-                                    </th>
+                                    </td>
                                     <td class="px-6 py-4">
                                         {{ $apartment->name }}
                                     </td>
@@ -46,6 +46,8 @@
                                         {{ $apartment->capacity }}
                                     </td>
                                     <td class="px-6 py-4 text-right">
+                                        <a href="{{ route('apartments.price',$apartment->id)}}" class="text-yellow-600 dark:text-yellow-500 hover:underline">Price</a>
+                                        /
                                         <a href="{{ route('apartments.edit',$apartment->id)}}" class="text-blue-600 dark:text-blue-500 hover:underline">Edit</a>
                                         /
                                         <button wire:click="deleteConfirm('destroy',{{$apartment->id}})" class="text-red-600 dark:text-red-500 hover:underline">
