@@ -989,9 +989,8 @@
                                     <div class="booking_item">
                                         <div class="background_image" style="background-image:url(/front/images/booking_2.jpg)"></div>
                                         <div class="booking_overlay trans_200"></div>
-                                        <div class="booking_price">$120/Night</div>
                                         <div class="booking_link">
-                                            <a href="https://themewagon.github.io/theriver/booking.html">{{ $apartment->name}}</a>
+                                            <a href="{{ route('singleApartment',$apartment->id)}}">{{ $apartment->name}}</a>
                                         </div>
                                     </div>
                                 </div>

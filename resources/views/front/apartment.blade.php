@@ -38,7 +38,6 @@
                                                 </ul>
                                             </div>
                                         </div>
-                                        <div class="booking_price">$120/Night</div>
                                         <div class="booking_link">
                                             <a href="{{ route('singleApartment',$apartment->id)}}">{{$apartment->name}}</a>
                                         </div>
