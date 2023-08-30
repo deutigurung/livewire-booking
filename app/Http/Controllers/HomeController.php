@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Apartment;
 use App\Models\Blog;
+use App\Models\Booking;
 use Illuminate\Http\Request;
 
 class HomeController extends Controller
@@ -57,5 +58,27 @@ class HomeController extends Controller
         $title = $apartment->name;
         $img = '/front/images/booking.jpg';
         return view('front.apartment-single',compact('title','img','apartment'));
+    }
+
+    public function booking($id){
+        $apartment = Apartment::findOrFail($id);
+        $title = 'Booking';
+        $img = '/front/images/booking.jpg';
+        return view('front.booking',compact('title','img','apartment'));
+    }
+
+    public function apartmentBookingStore(Request $request,)
+    {
+        $validate = $this->validate($request,[
+            'apartment_id' => 'required|exists:apartments,id',
+            'user_id' => 'required|exists:users,id',
+            'guest_adults' => 'required|integer',
+            'guest_children' => 'nullable|integer',
+            'total_price' => 'required|integer',
+            'start_date' => 'required|date',
+            'end_date' => 'required|date|after:start_date',
+        ]);
+        Booking::create($validate);
+        return redirect()->back()->with('success','Booking has been created');
     }
 }

@@ -37,6 +37,11 @@ Route::get('/blog/{slug}',[HomeController::class,'singleBlog'])->name('singleBlo
 Route::get('/apartment',[HomeController::class,'apartment'])->name('apartments');
 Route::get('/apartment/{id}',[HomeController::class,'singleApartment'])->name('singleApartment');
 
+Route::middleware(['auth'])->group(function(){
+    Route::get('/booking/{apartment}',[HomeController::class,'booking'])->name('booking');
+    Route::post('/booking/store',[HomeController::class,'apartmentBookingStore'])->name('apartmentBookingStore');    
+});
+
 
 
 

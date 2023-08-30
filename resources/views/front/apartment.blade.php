@@ -29,6 +29,8 @@
                                     <div class="booking_item">
                                         <div class="background_image" style="background-image:url(/front/images/booking_1.jpg)"></div>
                                         <div class="booking_overlay trans_200"></div>
+                                        <div class="booking_price">$ {{ $apartment->calculatePriceForDates()}}/Night</div>
+
                                         <div class="booking_item_content">
                                             <div class="booking_item_list">
                                                 <ul>

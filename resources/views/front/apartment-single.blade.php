@@ -46,7 +46,7 @@
                             @endforeach
                         </ul>
                     </div>
-                    <div class="book_now_button"><a href="#">Book Now</a></div>
+                    <div class="book_now_button"><a href="{{ route('booking',$apartment->id)}}">Book Now</a></div>
                 </div>
             </div>
 
