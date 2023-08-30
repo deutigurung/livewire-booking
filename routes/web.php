@@ -8,6 +8,7 @@ use App\Http\Livewire\Bed\BedForm;
 use App\Http\Livewire\Bed\BedList;
 use App\Http\Livewire\Blog\BlogForm;
 use App\Http\Livewire\Blog\BlogList;
+use App\Http\Livewire\BookingList;
 use App\Http\Livewire\City\CityForm;
 use App\Http\Livewire\City\CityList;
 use App\Http\Livewire\Country\CountryList;
@@ -81,5 +82,8 @@ Route::middleware(['auth:sanctum',config('jetstream.auth_session'),'verified',])
     Route::get('blogs/create',BlogForm::class)->name('blogs.create');
     Route::get('blogs',BlogList::class)->name('blogs.index');
     Route::get('blogs/{blog}',BlogForm::class)->name('blogs.edit');
+
+    Route::get('bookings',BookingList::class)->name('bookings.index');
+
 });
 
