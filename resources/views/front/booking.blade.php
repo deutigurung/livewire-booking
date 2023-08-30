@@ -29,10 +29,15 @@
                     <div class="contact_form_container">
                         <form action="{{ route('apartmentBookingStore')}}" class="contact_form"  method="POST" id="contact_form">
                             @csrf
-                            <input type="hidden" name="apartment_id" value="{{ $apartment->id }}" />
-                            <input type="hidden" name="user_id" value="{{ auth()->id() }}" />
-
                             <div class="row">
+                                <div class="col-md-12 input_container">
+                                    <input type="text" name="apartment_id" value="{{ $apartment->name }}" class="contact_input" placeholder="Apartment">
+
+                                    <input type="hidden" name="apartment_id" value="{{ $apartment->id }}" class="contact_input">
+                                    @error('apartment_id') 
+                                        <span class="error text-red-500">{{ $message }}</span> 
+                                    @enderror
+                                </div>
                                 <div class="col-md-6 input_container">
                                     <input type="date" name="start_date" class="contact_input" placeholder="Check in Date">
                                     @error('start_date') 
@@ -54,12 +59,6 @@
                                 <div class="col-md-6 input_container">
                                     <input type="number" min="0" name="guest_children" value="0" class="contact_input" placeholder="Total Children">
                                     @error('guest_children') 
-                                        <span class="error text-red-500">{{ $message }}</span> 
-                                    @enderror
-                                </div>
-                                <div class="col-md-6 input_container">
-                                    <input type="number" name="total_price" value="{{ $apartment->calculatePriceForDates() }}" class="contact_input" placeholder="Total Price">
-                                    @error('total_price') 
                                         <span class="error text-red-500">{{ $message }}</span> 
                                     @enderror
                                 </div>
