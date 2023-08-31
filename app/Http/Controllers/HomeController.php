@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Apartment;
 use App\Models\Blog;
-use App\Models\Booking;
+use App\Models\Property;
 use App\Rules\AvailableApartmentRule;
 use Illuminate\Http\Request;
 
@@ -79,5 +79,25 @@ class HomeController extends Controller
         ]);
         auth()->user()->bookings()->create($validate);
         return redirect()->back()->with('success','Booking has been created');
+    }
+
+    public function search(Request $request)
+    {
+        $query = Property::query();
+        // dd($request->all(),$request->adults,$request->children);
+        $properties = $query
+            ->when($request->adults || $request->children,function($query) use ($request){
+                //withWhereHas is combine of with and whereHas 
+                $query->withWhereHas('apartments',function($query) use ($request){
+                    $query->where('capacity_adults','>=',$request->adults)
+                            ->where('capacity_children','>=',$request->children);
+
+                });
+            })
+            ->get();
+        // dd($properties);
+        $title = 'Property';
+        $img = '/front/images/booking.jpg';
+        return view('front.properties',compact('title','img','properties')); 
     }
 }
