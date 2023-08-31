@@ -5,18 +5,19 @@ namespace App\Http\Livewire\Property;
 use App\Models\Property;
 use App\Models\Role;
 use Livewire\Component;
-
+use Livewire\WithPagination;
 class PropertyList extends Component
 {
+    use WithPagination;
     protected $listeners = ['destroy'];
 
     public function render()
     {
-        $query = Property::query();
+        $query = Property::query()->withCount('apartments');
         if(auth()->user()->role_id == Role::OWNER_ROLE){
             $query->where('owner_id', auth()->id());
         }
-        $properties = $query->latest()->get();
+        $properties = $query->latest()->paginate(25);
         return view('livewire.property.list',compact('properties'));
     }
 

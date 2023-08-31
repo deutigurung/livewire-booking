@@ -58,6 +58,7 @@
                     </table>
                 </div>
             </div>
+            {{ $rooms->links()}}
         </div>
     </div>
 </div>

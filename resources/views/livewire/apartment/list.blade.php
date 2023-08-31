@@ -60,6 +60,7 @@
                     </table>
                 </div>
             </div>
+            {{ $apartments->links()}}
         </div>
     </div>
 </div>

@@ -50,6 +50,7 @@
                     </table>
                 </div>
             </div>
+            {{ $cities->links()}}
         </div>
     </div>
 </div>

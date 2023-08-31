@@ -4,16 +4,17 @@ namespace App\Http\Livewire\Room;
 
 use App\Models\Room;
 use Livewire\Component;
+use Livewire\WithPagination;
 
 class RoomList extends Component
 {
+    use WithPagination;
     protected $listeners = ['destroy'];
    
     public function render()
     {
-        $rooms = Room::get();
+        $rooms = Room::paginate(25);
         return view('livewire.room.list',compact('rooms'));
-
     }
 
     public function deleteConfirm($method,$id = null){

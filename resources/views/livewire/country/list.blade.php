@@ -52,6 +52,7 @@
                     </table>
                 </div>
             </div>
+            {{ $countries->links()}}
         </div>
     </div>
 </div>

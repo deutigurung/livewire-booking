@@ -29,6 +29,11 @@
                                     </div>
                                 </th>
                                 <th scope="col" class="px-6 py-3">
+                                    <div class="flex items-center">
+                                        Total Apartments
+                                    </div>
+                                </th>
+                                <th scope="col" class="px-6 py-3">
                                     <span class="sr-only">Action</span>
                                 </th>
                             </tr>
@@ -45,6 +50,9 @@
                                     <td class="px-6 py-4">
                                         {{ $property->address }}
                                     </td>
+                                    <td class="px-6 py-4">
+                                        {{ $property->apartments_count }}
+                                    </td>
                                     <td class="px-6 py-4 text-right">
                                         <a href="{{ route('properties.edit',$property->id)}}" class="text-blue-600 dark:text-blue-500 hover:underline">Edit</a>
                                         /
@@ -58,6 +66,7 @@
                     </table>
                 </div>
             </div>
+            {{ $properties->links()}}
         </div>
     </div>
 </div>

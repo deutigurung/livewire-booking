@@ -4,13 +4,16 @@ namespace App\Http\Livewire\Bed;
 
 use App\Models\Bed;
 use Livewire\Component;
+use Livewire\WithPagination;
+
 
 class BedList extends Component
 {
+    use WithPagination;
     protected $listeners = ['destroy'];
     public function render()
     {
-        $beds = Bed::get();
+        $beds = Bed::paginate(25);
         return view('livewire.bed.list',compact('beds'));
     }
 
