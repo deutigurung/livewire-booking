@@ -12,8 +12,8 @@ class HomeController extends Controller
 {
     public function home()
     {
-        $blogs = Blog::active()->latest()->get();
-        $apartments = Apartment::latest()->get();
+        $blogs = Blog::active()->latest()->paginate(25);
+        $apartments = Apartment::latest()->paginate(25);
         return view('front.index',compact('blogs','apartments'));
     }
 
@@ -35,7 +35,7 @@ class HomeController extends Controller
     {
         $title = 'Blog';
         $img = '/front/images/booking.jpg';
-        $blogs = Blog::active()->latest()->get();
+        $blogs = Blog::active()->latest()->paginate(25);
         return view('front.blog',compact('title','img','blogs'));
     }
 
@@ -46,11 +46,14 @@ class HomeController extends Controller
         return view('front.blog-single',compact('title','img','blog'));
     }
 
-    public function apartment()
+    public function apartment(Request $request)
     {
         $title = 'Book a apartment';
         $img = '/front/images/booking.jpg';
-        $apartments = Apartment::latest()->get();
+        $apartments = Apartment::when($request->property,function($query) use ($request){
+            $query->where('property_id',$request->property);
+        })
+        ->latest()->paginate(25);
         return view('front.apartment',compact('title','img','apartments'));
     }
 
@@ -84,7 +87,6 @@ class HomeController extends Controller
     public function search(Request $request)
     {
         $query = Property::query();
-        // dd($request->all(),$request->adults,$request->children);
         $properties = $query
             ->when($request->adults || $request->children,function($query) use ($request){
                 //withWhereHas is combine of with and whereHas 
@@ -94,7 +96,7 @@ class HomeController extends Controller
 
                 });
             })
-            ->get();
+            ->paginate(30);
         // dd($properties);
         $title = 'Property';
         $img = '/front/images/booking.jpg';
