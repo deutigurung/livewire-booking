@@ -73,17 +73,17 @@
                                 <th scope="col" class="px-1 py-1 text-sm">
                                     <div class="">
                                         From
-                                        <input wire:model="" type="number" placeholder="Search ...." class="w-full text-sm rounded-md border-gray-300 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50">
+                                        <input wire:model="searchColumn.total_price.0" type="number" placeholder="Search ...." class="w-full text-sm rounded-md border-gray-300 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50">
                                         To
-                                        <input wire:model="" type="number" placeholder="Search ...." class="w-full text-sm rounded-md border-gray-300 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50">
+                                        <input wire:model="searchColumn.total_price.1" type="number" placeholder="Search ...." class="w-full text-sm rounded-md border-gray-300 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50">
                                     </div>
                                 </th>
                                 <th scope="col" class="px-1 py-1 text-sm">
                                     <div class="">
                                         From
-                                        <input wire:model="" type="date" placeholder="Search ...." class="w-full text-sm rounded-md border-gray-300 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50">
+                                        <input wire:model="searchColumn.date.0" type="date" placeholder="Search ...." class="w-full text-sm rounded-md border-gray-300 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50">
                                         To
-                                        <input wire:model="" type="date" placeholder="Search ...." class="w-full text-sm rounded-md border-gray-300 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50">
+                                        <input wire:model="searchColumn.date.1" type="date" placeholder="Search ...." class="w-full text-sm rounded-md border-gray-300 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50">
                                     </div>
                                 </th>
                                 <th scope="col" class="px-1 py-1 text-sm">
