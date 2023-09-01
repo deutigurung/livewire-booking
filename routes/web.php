@@ -44,7 +44,7 @@ Route::get('/search',[HomeController::class,'search'])->name('search');
 Route::middleware(['auth'])->group(function(){
     Route::get('/booking/{apartment?}',[HomeController::class,'booking'])->name('booking');
     Route::post('/booking/store',[HomeController::class,'apartmentBookingStore'])->name('apartmentBookingStore');    
-    Route::get('/booking/payment-method/{booking}',[HomeController::class,'chooseBookingPayment'])->name('payment');    
+    Route::get('/booking/payment-method/{invoice_id}',[HomeController::class,'chooseBookingPayment'])->name('booking.payment');    
 
     // Paypal payment 
     Route::get('/payment/paypal-handle',[PaypalController::class,'handlePayment'])->name('paypal.handlePayment');

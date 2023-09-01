@@ -82,25 +82,33 @@ class HomeController extends Controller
             'apartment_id' => ['required', new AvailableApartmentRule],
         ]);
         $booking = auth()->user()->bookings()->create($validate);
-        return redirect()->route('booking.payment',$booking)->with('success','Booking has been created');
+        return redirect()->route('booking.payment',$booking->invoice_id)->with('success','Booking has been created');
     }
 
-    public function chooseBookingPayment(Booking $booking){
+    public function chooseBookingPayment($id){
         $title = 'Booking';
         $img = '/front/images/booking.jpg';
+        $booking  = Booking::findByInvoiceId($id);
+
         return view('front.payment',compact('title','img','booking'));
     }
 
     public function search(Request $request)
     {
-        $query = Property::query();
-        $properties = $query
-            ->when($request->adults || $request->children,function($query) use ($request){
+        $properties = Property::query()
+            ->when($request->adults && $request->children,function($query) use ($request){
                 //withWhereHas is combine of with and whereHas 
                 $query->withWhereHas('apartments',function($query) use ($request){
                     $query->where('capacity_adults','>=',$request->adults)
                             ->where('capacity_children','>=',$request->children);
-
+                });
+            })
+            ->when($request->start_date && $request->end_date,function($query) use ($request){
+                $query->withWhereHas('apartments.apartment_prices',function($query) use ($request){
+                     $query->validForRange([
+                            $request->start_date ?? now()->addDay()->toDateString(),
+                            $request->end_date ?? now()->addDays(2)->toDateString(),
+                        ]);
                 });
             })
             ->paginate(30);

@@ -18,10 +18,10 @@
                                             <input type="date" name="end_date" class="datepicker booking_input booking_input_a booking_out hasDatepicker" placeholder="Check out" id="dp1691058116335" wfd-id="id1">
                                         </div>
                                         <div>
-                                            <input type="number" name="adults" min="1" class="booking_input booking_input_b" placeholder="Adults" wfd-id="id2">
+                                            <input type="number" name="adults" min="1" value="1" class="booking_input booking_input_b" placeholder="Adults" wfd-id="id2">
                                         </div>
                                         <div>
-                                            <input type="number" name="children" min="0" class="booking_input booking_input_b" placeholder="Children" wfd-id="id3">
+                                            <input type="number" name="children" min="0" value="0" class="booking_input booking_input_b" placeholder="Children" wfd-id="id3">
                                         </div>
                                     </div>
                                     <div>

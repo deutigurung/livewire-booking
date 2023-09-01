@@ -20,7 +20,7 @@ class PaypalController extends Controller
     }
     public function handlePayment(Request $request)
     {
-        $booking  = Booking::findOrFail($request->get('booking_id'));
+        $booking  = Booking::findByInvoiceId($request->get('booking_id'));
         $data = [
             "intent" => "CAPTURE",
             "application_context" => [
@@ -37,7 +37,7 @@ class PaypalController extends Controller
                     "currency_code" => "USD",
                     "value" => $booking->total_price
                 ],
-                "invoice_id" => $booking->id,
+                "invoice_id" => $request->get('booking_id'),
               ]
             ],
             
@@ -60,17 +60,16 @@ class PaypalController extends Controller
     public function successPayment(Request $request)
     {
         $response = $this->provider->capturePaymentOrder($request['token']);
-       // dump($response);
+       // dd($response);
        if (isset($response['status']) && $response['status'] == 'COMPLETED') {
             $bookingId = $response['purchase_units'][0]['payments']['captures'][0]['invoice_id'];
-            $data = Booking::findOrFail($bookingId);
+            $data = Booking::findByInvoiceId($bookingId);
             $data->update([
                 'payment_status' => 'paid',
                 'payment_method' => 'paypal',
-                'review_comment' => $response['id']
+                'payment_transaction' => $response['id']
             ]);
-            return redirect()->route('booking')
-                ->with('success', 'Transaction complete.');
+            return redirect()->route('booking')->with('success', 'Transaction complete.');
         }else{
             return redirect()->route('paypal.cancelPayment')->with('error',$response['message']);
         }

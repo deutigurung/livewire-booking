@@ -51,4 +51,9 @@ class Property extends Model
     {
         return $this->hasMany(Apartment::class,'property_id');
     }
+
+    public function bookings()
+    {
+        return $this->hasManyThrough(Booking::class,Apartment::class) ;
+    }
 }

@@ -38,7 +38,7 @@
                     <div class="contact_title"><h2>Select Payment Method</h2></div>
                     <div class="contact_form_container">
                         <form action="{{ route('paypal.handlePayment')}}" class="contact_form">
-                            <input type="hidden" name="booking_id" value="{{ $booking->id}}">
+                            <input type="hidden" name="booking_id" value="{{ $booking->invoice_id}}">
                             <button type="submit" class="contact_button">Pay ${{$booking->total_price}} via Paypal</button>
                         </form>
 
