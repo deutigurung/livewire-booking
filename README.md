@@ -21,4 +21,7 @@ Learn about:
 
 ## References docs
 - [Macro Builder](https://devdojo.com/jeblister/how-to-build-a-searching-macro-in-laravel)
-- [Livewire] (https://laravel-livewire.com/screencasts/installation)
+- [Livewire](https://laravel-livewire.com/screencasts/installation)
+https://jilt.com/blog/paypal-comparison-which-paypal-service/#:~:text=PayPal%20Express%20is%20very%20similar,t%20complete%20checkout%20at%20PayPal.
+
+https://www.laravelia.com/post/laravel-10-paypal-payment-and-dive-into-details#google_vignette

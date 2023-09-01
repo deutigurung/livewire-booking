@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Apartment;
 use App\Models\Blog;
+use App\Models\Booking;
 use App\Models\Property;
 use App\Rules\AvailableApartmentRule;
 use Illuminate\Http\Request;
@@ -64,8 +65,8 @@ class HomeController extends Controller
         return view('front.apartment-single',compact('title','img','apartment'));
     }
 
-    public function booking($id){
-        $apartment = Apartment::findOrFail($id);
+    public function booking($id = null){
+        $apartment = Apartment::find($id);
         $title = 'Booking';
         $img = '/front/images/booking.jpg';
         return view('front.booking',compact('title','img','apartment'));
@@ -74,14 +75,20 @@ class HomeController extends Controller
     public function apartmentBookingStore(Request $request,)
     {
         $validate = $this->validate($request,[
-            'apartment_id' => ['required', new AvailableApartmentRule],
             'guest_adults' => ['required','integer'],
             'guest_children' => ['nullable','integer'],
             'start_date' => ['required', 'date', ],
             'end_date' => ['required', 'date', 'after:start_date'],
+            'apartment_id' => ['required', new AvailableApartmentRule],
         ]);
-        auth()->user()->bookings()->create($validate);
-        return redirect()->back()->with('success','Booking has been created');
+        $booking = auth()->user()->bookings()->create($validate);
+        return redirect()->route('booking.payment',$booking)->with('success','Booking has been created');
+    }
+
+    public function chooseBookingPayment(Booking $booking){
+        $title = 'Booking';
+        $img = '/front/images/booking.jpg';
+        return view('front.payment',compact('title','img','booking'));
     }
 
     public function search(Request $request)

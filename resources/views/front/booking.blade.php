@@ -24,6 +24,16 @@
             
             <!-- Contact Content -->
             <div class="col-lg-12">
+                @if(session()->has('error'))
+                    <div class="alert alert-danger">
+                        {{ session()->get('error') }}
+                    </div>
+                @endif
+                @if(session()->has('success'))
+                    <div class="alert alert-danger">
+                        {{ session()->get('success') }}
+                    </div>
+                @endif
                 <div class="contact_content">
                     <div class="contact_title"><h2>Book an Apartment</h2></div>
                     <div class="contact_form_container">
@@ -31,21 +41,21 @@
                             @csrf
                             <div class="row">
                                 <div class="col-md-12 input_container">
-                                    <input type="text" name="apartment_id" value="{{ $apartment->name }}" class="contact_input" placeholder="Apartment">
+                                    <input type="text" name="apartment_id" value="{{ $apartment?->name }}" class="contact_input" placeholder="Apartment">
 
-                                    <input type="hidden" name="apartment_id" value="{{ $apartment->id }}" class="contact_input">
+                                    <input type="hidden" name="apartment_id" value="{{ $apartment?->id }}" class="contact_input">
                                     @error('apartment_id') 
                                         <span class="error text-red-500">{{ $message }}</span> 
                                     @enderror
                                 </div>
                                 <div class="col-md-6 input_container">
-                                    <input type="date" name="start_date" class="contact_input" placeholder="Check in Date">
+                                    <input type="date" name="start_date" class="contact_input" required placeholder="Check in Date">
                                     @error('start_date') 
                                         <span class="error text-red-500">{{ $message }}</span> 
                                     @enderror
                                 </div>
                                 <div class="col-md-6 input_container">
-                                    <input type="date" name="end_date" class="contact_input" placeholder="Check out Date">
+                                    <input type="date" name="end_date" class="contact_input" required placeholder="Check out Date">
                                     @error('end_date') 
                                         <span class="error text-red-500">{{ $message }}</span> 
                                     @enderror

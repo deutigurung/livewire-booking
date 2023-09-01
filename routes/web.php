@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\Payment\PaypalController;
 use App\Http\Livewire\Apartment\ApartmentForm;
 use App\Http\Livewire\Apartment\ApartmentList;
 use App\Http\Livewire\Apartment\ApartmentPriceForm;
@@ -41,8 +42,14 @@ Route::get('/search',[HomeController::class,'search'])->name('search');
 
 
 Route::middleware(['auth'])->group(function(){
-    Route::get('/booking/{apartment}',[HomeController::class,'booking'])->name('booking');
+    Route::get('/booking/{apartment?}',[HomeController::class,'booking'])->name('booking');
     Route::post('/booking/store',[HomeController::class,'apartmentBookingStore'])->name('apartmentBookingStore');    
+    Route::get('/booking/payment-method/{booking}',[HomeController::class,'chooseBookingPayment'])->name('payment');    
+
+    // Paypal payment 
+    Route::get('/payment/paypal-handle',[PaypalController::class,'handlePayment'])->name('paypal.handlePayment');
+    Route::get('/payment/paypal-success',[PaypalController::class,'successPayment'])->name('paypal.successPayment');
+    Route::get('/payment/paypal-cancel',[PaypalController::class,'cancelPayment'])->name('paypal.cancelPayment');
 });
 
 

@@ -170,7 +170,8 @@ return [
         App\Providers\RouteServiceProvider::class,
         App\Providers\FortifyServiceProvider::class,
         App\Providers\JetstreamServiceProvider::class,
-        App\Providers\MacroServiceProvider::class
+        App\Providers\MacroServiceProvider::class,
+        Srmklive\PayPal\Providers\PayPalServiceProvider::class
     ])->toArray(),
 
     /*
@@ -185,6 +186,7 @@ return [
     */
 
     'aliases' => Facade::defaultAliases()->merge([
+        'PayPal' => Srmklive\PayPal\Facades\PayPal::class,
         // 'Example' => App\Facades\Example::class,
     ])->toArray(),
 
