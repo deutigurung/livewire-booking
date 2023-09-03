@@ -42,7 +42,9 @@
                             <button type="submit" class="contact_button">Pay ${{$booking->total_price}} via Paypal</button>
                         </form>
 
-                        <form action="#" class="contact_form">
+                        <form action="{{ route('stripe.handlePayment')}}" method="POST" class="contact_form">
+                            @csrf
+                            <input type="hidden" name="booking_id" value="{{ $booking->invoice_id}}">
                             <button type="submit" class="contact_button">Pay ${{$booking->total_price}} via Strip</button>
                         </form>
 

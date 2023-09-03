@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\Payment\PaypalController;
+use App\Http\Controllers\Payment\StripeController;
 use App\Http\Livewire\Apartment\ApartmentForm;
 use App\Http\Livewire\Apartment\ApartmentList;
 use App\Http\Livewire\Apartment\ApartmentPriceForm;
@@ -50,6 +51,12 @@ Route::middleware(['auth'])->group(function(){
     Route::get('/payment/paypal-handle',[PaypalController::class,'handlePayment'])->name('paypal.handlePayment');
     Route::get('/payment/paypal-success',[PaypalController::class,'successPayment'])->name('paypal.successPayment');
     Route::get('/payment/paypal-cancel',[PaypalController::class,'cancelPayment'])->name('paypal.cancelPayment');
+
+    // Stripe payment 
+    Route::post('/payment/stripe-handle',[StripeController::class,'handlePayment'])->name('stripe.handlePayment');
+    Route::get('/payment/stripe-success/{booking}/{session_id?}',[StripeController::class,'successPayment'])->name('stripe.successPayment');
+    Route::get('/payment/stripe-cancel',[StripeController::class,'cancelPayment'])->name('stripe.cancelPayment');
+
 });
 
 
